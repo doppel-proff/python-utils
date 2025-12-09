@@ -23,6 +23,15 @@ def save_value(Value, Path, Folder_name, File_name, Unit):
     with open(File_path, 'w') as file:
         file.write(str(Value)+ Unit)
 
+#Parcour les fichiers d'un répertoire et retourne la liste des noms de chaque fichier 
+def parcour(File):
+    L=[]
+    for N in os.listdir(File):
+        Path = os.path.join(File,N)
+        if os.path.isfile(Path):
+            L.append(N)
+    return L
+
 #Sauvegarde un vecteur au format csv
 #def save_csv_vect(L, Path, Folder_name, File_name):
 
