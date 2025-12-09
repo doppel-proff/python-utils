@@ -32,6 +32,10 @@ def parcour(File):
             L.append(N)
     return L
 
+#Dans un str supprime le point et les caractères suivants
+def del_ext(str) -> str:
+    return chaine.split('.')[0]
+
 #Sauvegarde un vecteur au format csv
 #def save_csv_vect(L, Path, Folder_name, File_name):
 
