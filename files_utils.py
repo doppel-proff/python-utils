@@ -7,6 +7,7 @@ Created on Mon Oct 14 13:20:34 2024
 #Import des modules 
 import numpy as np
 import os
+import shutil
 
 #retourne sous forme de matrice les valeurs contenues dans un fichier .csv
 def open_csv(File):
@@ -24,17 +25,31 @@ def save_value(Value, Path, Folder_name, File_name, Unit):
         file.write(str(Value)+ Unit)
 
 #Parcour les fichiers d'un répertoire et retourne la liste des noms de chaque fichier 
-def parcour(File):
+def parcour(Dir):
     L=[]
-    for N in os.listdir(File):
-        Path = os.path.join(File,N)
+    for N in os.listdir(Dir):
+        Path = os.path.join(Dir,N)
         if os.path.isfile(Path):
             L.append(N)
     return L
 
 #Dans un str supprime le point et les caractères suivants
-def del_ext(str) -> str:
-    return chaine.split('.')[0]
+def del_ext(File) -> str:
+    return File.split('.')[0]
+
+def return_ext (File) :
+    return File.split('.')[1]
+
+def sort_ext(Dir):
+    L = parcour(Dir) 
+    for File in L:
+        Path = os.path.join(Dir,File)
+        Ext = return_ext(File)
+        New_Dir = os.path.join(Dir,Ext)
+        os.makedirs(New_Dir, exist_ok=True)
+        File_Path = os.path.join(New_Dir,File)
+        shutil.move (Path,File_Path)
+        #print("Files sorted according to their extention")
 
 #Sauvegarde un vecteur au format csv
 #def save_csv_vect(L, Path, Folder_name, File_name):
