@@ -25,25 +25,25 @@ def enlever_n_derniers_points (L,n) :
 
 #On définit une fonction pour supprimer les points au-delà d'une valeur n dans la liste des abscices
 def enlever_les_points_sup_à_n (X,Y,n):
-    Xs,Ys = [],[]
-    if len(X) != len(Y) :
-        print("different list length")
-    for i in range(len(X)):
-        if X[i] <= n :
-            Xs.append(X[i])
-            Ys.append(Y[i])
-    return(Xs,Ys)
+    i=0
+    while i<len(X):
+        if X[i]>n:
+            X.remove(X[i])
+            Y.remove(Y[i])
+        else :
+            i+=1
+    return(X,Y)
 
 #On définit une fonction pour supprimer les points inférieure à une valeur n dans la liste des abscices
 def enlever_les_points_inf_à_n (X,Y,n):
-    Xs,Ys = [],[]
-    if len(X) != len(Y) :
-        print("different list length")
-    for i in range(len(X)):
-        if X[i] >= n :
-            Xs.append(X[i])
-            Ys.append(Y[i])
-    return(Xs,Ys)
+    i=0
+    while i<len(X):
+        if X[i]<n:
+            X.remove(X[i])
+            Y.remove(Y[i])
+        else :
+            i+=1
+    return(X,Y)
 
 #On définit une fonction pour convertir une liste à l'échelle logarithmique.
 def échelle_log(L):
