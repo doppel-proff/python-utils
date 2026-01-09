@@ -26,7 +26,7 @@ def graphsup(M,Path,Repo,Fig_name,Y_Axes,X_Axe):
 
 #Enregistre les graphs séparés des paires de vecteurs contenues dans, aux formats .png et .pdf 
 #Fig_name,Y_Axe,X_Axe sont des listes de longueur len(M)
-def multigraph(M,Path,Repo,Fig_name,Y_Axe,X_Axe):
+def multigraph(M,Path,Repo,Fig_name,Y_Axe,X_Axe, Y_min: float | None = None , Y_max: float | None = None, X_min: float | None = None , X_max: float | None = None):
     new_folder_path = Path+'\\'+Repo#Emplacement du dossier où seront enregistrées les courbes
     os.makedirs(new_folder_path, exist_ok=True) # Création du dossier
     for i in range (len(M)) :
@@ -35,6 +35,10 @@ def multigraph(M,Path,Repo,Fig_name,Y_Axe,X_Axe):
         ax.set_title(str(Fig_name[i]))
         ax.set_xlabel(str(X_Axe[i]))
         ax.set_ylabel(str(Y_Axe[i]))
+        if Y_min & Y_max:
+            ax.set_ylim(Y_min,Y_max)
+        if X_min & X_max:
+           ax.set_ylim(X_min,X_max)      
         fig.savefig(Path+'\\'+Repo+'\\'+str(Fig_name[i])+'.png')   # Enregistrement de la figure au format .png
         fig.savefig(Path+'\\'+Repo+'\\'+str(Fig_name[i])+'.pdf')   # Enregistrement de la figure au format .pdf
         plt.close(fig)
