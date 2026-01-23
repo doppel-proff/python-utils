@@ -35,10 +35,10 @@ def multigraph(M,Path,Repo,Fig_name,Y_Axe,X_Axe, Y_min: float | None = None , Y_
         ax.set_title(str(Fig_name[i]))
         ax.set_xlabel(str(X_Axe[i]))
         ax.set_ylabel(str(Y_Axe[i]))
-        if Y_min & Y_max:
+        if Y_min is not None and Y_max is not None :
             ax.set_ylim(Y_min,Y_max)
-        if X_min & X_max:
-            ax.set_ylim(X_min,X_max)      
+        if X_min is not None and X_max is not None :
+            ax.set_xlim(X_min,X_max)      
         fig.savefig(Path+'\\'+Repo+'\\'+str(Fig_name[i])+'.png')   # Enregistrement de la figure au format .png
         fig.savefig(Path+'\\'+Repo+'\\'+str(Fig_name[i])+'.pdf')   # Enregistrement de la figure au format .pdf
         plt.close(fig)
